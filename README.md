@@ -16,7 +16,7 @@ https://github.com/twitchyliquid64/usbd-hid/issues/61#issuecomment-1826177494
 
 I've put that code in the joystick.rs mod.
 
-As usual, I'm using a channel and an embassy task that listens to that channel.
+I'm using an Embassy signal to send the JoystickReports between the demo task and the USB sending task.
 
 To feed that channel I've created an example (demo.rs) that simulates a rotating motion (using some sin/cos) as if you would be rotating
 a joystick. 

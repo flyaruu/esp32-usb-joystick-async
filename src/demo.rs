@@ -1,6 +1,6 @@
 use core::f32::consts::PI;
 
-use libm::{cos, cosf, sinf};
+use libm::{cosf, sinf};
 use num_traits::ToPrimitive;
 
 use crate::joystick::JoystickReport;

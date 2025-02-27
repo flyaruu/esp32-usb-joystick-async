@@ -3,9 +3,9 @@
 
 use alloc::boxed::Box;
 use embassy_executor::{task, Spawner};
-use embassy_sync::{blocking_mutex::raw::{CriticalSectionRawMutex, NoopRawMutex}, signal::Signal};
+use embassy_sync::{blocking_mutex::raw::CriticalSectionRawMutex, signal::Signal};
 use embassy_time::{Duration, Timer};
-use embassy_usb::{class::hid::{HidReaderWriter, HidWriter, State}, Builder, UsbDevice};
+use embassy_usb::{class::hid::{HidWriter, State}, Builder, UsbDevice};
 use esp32_usb_joystick_async::{demo::Rotator, joystick::JoystickReport};
 use esp_backtrace as _;
 use esp_hal::{clock::CpuClock, otg_fs::{asynch::{Config, Driver}, Usb}};
@@ -81,7 +81,7 @@ async fn main(spawner: Spawner) {
     let state = Box::leak(Box::new(State::new()));
 
 
-    let mut writer: HidWriter<'_, Driver<'_>, 8> = HidWriter::new(&mut builder, state, config);
+    let writer: HidWriter<'_, Driver<'_>, 8> = HidWriter::new(&mut builder, state, config);
 
     let usb = builder.build();
 
